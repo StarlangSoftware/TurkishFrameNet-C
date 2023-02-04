@@ -31,6 +31,7 @@ Frame_net_ptr create_frame_net() {
         array_list_add(result->frames, currentFrame);
         frameNode = frameNode->next_sibling;
     }
+    free_document(xmlDocument);
     return result;
 }
 

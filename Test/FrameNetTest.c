@@ -34,7 +34,7 @@ void testFrameElementSize(Frame_net_ptr frame_net){
 
 void testDistinctFrameElements(Frame_net_ptr frame_net){
     Hash_set_ptr elements;
-    elements = create_hash_set((int (*)(void *, int)) hash_function_string, (int (*)(void *, void *)) compare_string);
+    elements = create_hash_set((unsigned int (*)(void *, int)) hash_function_string, (int (*)(void *, void *)) compare_string);
     for (int i = 0; i < frame_size(frame_net); i++){
         for (int j = 0; j < frame_element_size(get_frame(frame_net, i)); j++){
             hash_set_insert(elements, get_frame_element(get_frame(frame_net, i), j));

@@ -32,7 +32,7 @@ Frame_element_ptr create_frame_element(char *frame_element_type, char *frame, ch
  */
 Frame_element_ptr create_frame_element2(char *frame_element) {
     Frame_element_ptr result = malloc(sizeof(Frame_element));
-    if (strchr(frame_element, '$') != NULL){
+    if (strchr(frame_element, '$') != NULL) {
         Array_list_ptr items = str_split(frame_element, '$');
         result->frame_element_type = array_list_get(items, 0);
         result->frame = array_list_get(items, 1);

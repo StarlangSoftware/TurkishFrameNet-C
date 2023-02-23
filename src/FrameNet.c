@@ -14,17 +14,17 @@ Frame_net_ptr create_frame_net() {
     parse(xmlDocument);
     Xml_element_ptr rootNode = xmlDocument->root;
     Xml_element_ptr frameNode = rootNode->first_child;
-    while (frameNode != NULL){
+    while (frameNode != NULL) {
         Frame_ptr currentFrame = create_frame(get_attribute_value(frameNode, "NAME"));
         Xml_element_ptr lexicalUnits = frameNode->first_child;
         Xml_element_ptr lexicalUnit = lexicalUnits->first_child;
-        while (lexicalUnit != NULL){
+        while (lexicalUnit != NULL) {
             add_lexical_unit(currentFrame, lexicalUnit->pcData);
             lexicalUnit = lexicalUnit->next_sibling;
         }
         Xml_element_ptr frameElements = lexicalUnits->next_sibling;
         Xml_element_ptr frameElement = frameElements->first_child;
-        while (frameElement != NULL){
+        while (frameElement != NULL) {
             add_frame_element(currentFrame, frameElement->pcData);
             frameElement = frameElement->next_sibling;
         }
@@ -41,9 +41,9 @@ void free_frame_net(Frame_net_ptr frame_net) {
 }
 
 int frame_net_lexical_unit_exists(Frame_net_ptr frame_net, char *synSetId) {
-    for (int i = 0; i < frame_net->frames->size; i++){
+    for (int i = 0; i < frame_net->frames->size; i++) {
         Frame_ptr frame = array_list_get(frame_net->frames, i);
-        if (frame_lexical_unit_exists(frame, synSetId)){
+        if (frame_lexical_unit_exists(frame, synSetId)) {
             return 1;
         }
     }
@@ -52,9 +52,9 @@ int frame_net_lexical_unit_exists(Frame_net_ptr frame_net, char *synSetId) {
 
 Array_list_ptr get_frames(Frame_net_ptr frame_net, char *synSetId) {
     Array_list_ptr result = create_array_list();
-    for (int i = 0; i < frame_net->frames->size; i++){
+    for (int i = 0; i < frame_net->frames->size; i++) {
         Frame_ptr frame = array_list_get(frame_net->frames, i);
-        if (frame_lexical_unit_exists(frame, synSetId)){
+        if (frame_lexical_unit_exists(frame, synSetId)) {
             array_list_add(result, frame);
         }
     }

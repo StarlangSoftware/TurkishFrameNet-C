@@ -22,7 +22,7 @@ void free_frame(Frame_ptr frame) {
     free(frame);
 }
 
-int frame_lexical_unit_exists(Frame_ptr frame, char *synSetId) {
+bool frame_lexical_unit_exists(Frame_ptr frame, char *synSetId) {
     return array_list_contains(frame->lexical_units, synSetId, (int (*)(void *, void *)) compare_string);
 }
 

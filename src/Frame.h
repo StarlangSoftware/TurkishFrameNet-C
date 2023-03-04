@@ -20,7 +20,7 @@ Frame_ptr create_frame(char *name);
 
 void free_frame(Frame_ptr frame);
 
-int frame_lexical_unit_exists(Frame_ptr frame, char *synSetId);
+bool frame_lexical_unit_exists(Frame_ptr frame, char *synSetId);
 
 char *get_lexical_unit(Frame_ptr frame, int index);
 

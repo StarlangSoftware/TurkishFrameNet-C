@@ -40,14 +40,14 @@ void free_frame_net(Frame_net_ptr frame_net) {
     free(frame_net);
 }
 
-int frame_net_lexical_unit_exists(Frame_net_ptr frame_net, char *synSetId) {
+bool frame_net_lexical_unit_exists(Frame_net_ptr frame_net, char *synSetId) {
     for (int i = 0; i < frame_net->frames->size; i++) {
         Frame_ptr frame = array_list_get(frame_net->frames, i);
         if (frame_lexical_unit_exists(frame, synSetId)) {
-            return 1;
+            return true;
         }
     }
-    return 0;
+    return false;
 }
 
 Array_list_ptr get_frames(Frame_net_ptr frame_net, char *synSetId) {

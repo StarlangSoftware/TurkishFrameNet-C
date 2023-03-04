@@ -19,7 +19,7 @@ Frame_net_ptr create_frame_net();
 
 void free_frame_net(Frame_net_ptr frame_net);
 
-int frame_net_lexical_unit_exists(Frame_net_ptr frame_net, char *synSetId);
+bool frame_net_lexical_unit_exists(Frame_net_ptr frame_net, char *synSetId);
 
 Array_list_ptr get_frames(Frame_net_ptr frame_net, char *synSetId);
 

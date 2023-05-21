@@ -15,7 +15,7 @@
  * @param frame  Frame of the frameElement
  * @param id  Id of the frameElement
  */
-Frame_element_ptr create_frame_element(char *frame_element_type, char *frame, char *id) {
+Frame_element_ptr create_frame_element(const char *frame_element_type, const char *frame, const char *id) {
     Frame_element_ptr result = malloc(sizeof(Frame_element));
     result->frame_element_type = str_copy(result->frame_element_type, frame_element_type);
     result->frame = str_copy(result->frame, frame);
@@ -30,7 +30,7 @@ Frame_element_ptr create_frame_element(char *frame_element_type, char *frame, ch
  *
  * @param frame_element  FrameElement string containing the frameElementType and id
  */
-Frame_element_ptr create_frame_element2(char *frame_element) {
+Frame_element_ptr create_frame_element2(const char *frame_element) {
     Frame_element_ptr result = malloc(sizeof(Frame_element));
     if (strchr(frame_element, '$') != NULL) {
         Array_list_ptr items = str_split(frame_element, '$');

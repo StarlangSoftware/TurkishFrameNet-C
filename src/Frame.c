@@ -7,7 +7,7 @@
 #include <HashMap/HashMap.h>
 #include "Frame.h"
 
-Frame_ptr create_frame(char *name) {
+Frame_ptr create_frame(const char *name) {
     Frame_ptr result = malloc(sizeof(Frame));
     result->name = str_copy(result->name, name);
     result->frame_elements = create_array_list();
@@ -22,23 +22,23 @@ void free_frame(Frame_ptr frame) {
     free(frame);
 }
 
-bool frame_lexical_unit_exists(Frame_ptr frame, char *synSetId) {
-    return array_list_contains(frame->lexical_units, synSetId, (int (*)(void *, void *)) compare_string);
+bool frame_lexical_unit_exists(const Frame* frame, const char *synSetId) {
+    return array_list_contains(frame->lexical_units, synSetId, (int (*)(const void *, const void *)) compare_string);
 }
 
-char *get_lexical_unit(Frame_ptr frame, int index) {
+char *get_lexical_unit(const Frame* frame, int index) {
     return array_list_get(frame->lexical_units, index);
 }
 
-char *get_frame_element(Frame_ptr frame, int index) {
+char *get_frame_element(const Frame* frame, int index) {
     return array_list_get(frame->frame_elements, index);
 }
 
-int lexical_unit_size(Frame_ptr frame) {
+int lexical_unit_size(const Frame* frame) {
     return frame->lexical_units->size;
 }
 
-int frame_element_size(Frame_ptr frame) {
+int frame_element_size(const Frame* frame) {
     return frame->frame_elements->size;
 }
 

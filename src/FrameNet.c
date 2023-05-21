@@ -40,7 +40,7 @@ void free_frame_net(Frame_net_ptr frame_net) {
     free(frame_net);
 }
 
-bool frame_net_lexical_unit_exists(Frame_net_ptr frame_net, char *synSetId) {
+bool frame_net_lexical_unit_exists(const Frame_net* frame_net, const char *synSetId) {
     for (int i = 0; i < frame_net->frames->size; i++) {
         Frame_ptr frame = array_list_get(frame_net->frames, i);
         if (frame_lexical_unit_exists(frame, synSetId)) {
@@ -50,7 +50,7 @@ bool frame_net_lexical_unit_exists(Frame_net_ptr frame_net, char *synSetId) {
     return false;
 }
 
-Array_list_ptr get_frames(Frame_net_ptr frame_net, char *synSetId) {
+Array_list_ptr get_frames(const Frame_net* frame_net, const char *synSetId) {
     Array_list_ptr result = create_array_list();
     for (int i = 0; i < frame_net->frames->size; i++) {
         Frame_ptr frame = array_list_get(frame_net->frames, i);
@@ -61,10 +61,10 @@ Array_list_ptr get_frames(Frame_net_ptr frame_net, char *synSetId) {
     return result;
 }
 
-int frame_size(Frame_net_ptr frame_net) {
+int frame_size(const Frame_net* frame_net) {
     return frame_net->frames->size;
 }
 
-Frame_ptr get_frame(Frame_net_ptr frame_net, int index) {
+Frame_ptr get_frame(const Frame_net* frame_net, int index) {
     return array_list_get(frame_net->frames, index);
 }

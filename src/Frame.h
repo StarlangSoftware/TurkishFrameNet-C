@@ -16,19 +16,19 @@ struct frame {
 typedef struct frame Frame;
 typedef Frame *Frame_ptr;
 
-Frame_ptr create_frame(char *name);
+Frame_ptr create_frame(const char *name);
 
 void free_frame(Frame_ptr frame);
 
-bool frame_lexical_unit_exists(Frame_ptr frame, char *synSetId);
+bool frame_lexical_unit_exists(const Frame* frame, const char *synSetId);
 
-char *get_lexical_unit(Frame_ptr frame, int index);
+char *get_lexical_unit(const Frame* frame, int index);
 
-char *get_frame_element(Frame_ptr frame, int index);
+char *get_frame_element(const Frame* frame, int index);
 
-int lexical_unit_size(Frame_ptr frame);
+int lexical_unit_size(const Frame* frame);
 
-int frame_element_size(Frame_ptr frame);
+int frame_element_size(const Frame* frame);
 
 void add_lexical_unit(Frame_ptr frame, char *lexical_unit);
 

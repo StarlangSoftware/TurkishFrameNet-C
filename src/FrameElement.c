@@ -9,7 +9,7 @@
 #include "StringUtils.h"
 
 /**
- * Another constructor of {@link FrameElement} class which takes _frameElementType and _id as inputs and initializes corresponding attributes
+ * Another constructor of FrameElement class which takes _frameElementType and _id as inputs and initializes corresponding attributes
  *
  * @param frame_element_type  Type of the frameElement
  * @param frame  Frame of the frameElement
@@ -24,7 +24,7 @@ Frame_element_ptr create_frame_element(const char *frame_element_type, const cha
 }
 
 /**
- * A constructor of {@link FrameElement} class which takes frameElement string which is in the form of frameElementType$id
+ * A constructor of FrameElement class which takes frameElement string which is in the form of frameElementType$id
  * and parses this string into frameElementType and id. If the frameElement string does not contain '$' then the
  * constructor return a NONE type frameElement.
  *

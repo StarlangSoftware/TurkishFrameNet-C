@@ -5,6 +5,7 @@
 #include <stdlib.h>
 #include <string.h>
 #include <ArrayList.h>
+#include <stdio.h>
 #include "FrameElement.h"
 #include "StringUtils.h"
 
@@ -51,4 +52,23 @@ void free_frame_element(Frame_element_ptr frame_element) {
     free(frame_element->frame);
     free(frame_element->id);
     free(frame_element);
+}
+
+/**
+ * to_string converts an FrameElement to a string. If the frameElementType is "NONE" returns only "NONE", otherwise
+ * it returns frameElement string which is in the form of frameElementType$id
+ *
+ * @return string form of frameElement
+ */
+char *frame_element_to_string(Frame_element_ptr frame_element) {
+    char* result;
+    if (strcmp(frame_element->frame_element_type, "NONE") == 0){
+        result = malloc(5 * sizeof(char));
+        strcpy(result, "NONE");
+        return result;
+    } else {
+        result = malloc((strlen(frame_element->frame_element_type) + 3 + strlen(frame_element->id) + strlen(frame_element->frame)) * sizeof(char));
+        sprintf(result, "%s$%s$%s", frame_element->frame_element_type, frame_element->frame, frame_element->id);
+        return result;
+    }
 }

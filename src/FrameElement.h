@@ -20,4 +20,6 @@ Frame_element_ptr create_frame_element2(const char *frame_element);
 
 void free_frame_element(Frame_element_ptr frame_element);
 
+char* frame_element_to_string(Frame_element_ptr frame_element);
+
 #endif //FRAMENET_FRAMEELEMENT_H

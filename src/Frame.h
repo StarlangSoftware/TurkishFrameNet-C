@@ -30,8 +30,8 @@ int lexical_unit_size(const Frame* frame);
 
 int frame_element_size(const Frame* frame);
 
-void add_lexical_unit(Frame_ptr frame, char *lexical_unit);
+void add_lexical_unit(Frame_ptr frame, const char *lexical_unit);
 
-void add_frame_element(Frame_ptr frame, char *frame_element);
+void add_frame_element(Frame_ptr frame, const char *frame_element);
 
 #endif //FRAMENET_FRAME_H

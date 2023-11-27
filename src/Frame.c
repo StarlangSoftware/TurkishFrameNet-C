@@ -5,10 +5,11 @@
 #include <stdlib.h>
 #include <StringUtils.h>
 #include <HashMap/HashMap.h>
+#include <Memory/Memory.h>
 #include "Frame.h"
 
 Frame_ptr create_frame(const char *name) {
-    Frame_ptr result = malloc(sizeof(Frame));
+    Frame_ptr result = malloc_(sizeof(Frame), "create_frame");
     result->name = str_copy(result->name, name);
     result->frame_elements = create_array_list();
     result->lexical_units = create_array_list();
@@ -16,10 +17,10 @@ Frame_ptr create_frame(const char *name) {
 }
 
 void free_frame(Frame_ptr frame) {
-    free_array_list(frame->frame_elements, free);
-    free_array_list(frame->lexical_units, free);
-    free(frame->name);
-    free(frame);
+    free_array_list(frame->frame_elements, free_);
+    free_array_list(frame->lexical_units, free_);
+    free_(frame->name);
+    free_(frame);
 }
 
 bool frame_lexical_unit_exists(const Frame* frame, const char *synSetId) {
@@ -42,10 +43,12 @@ int frame_element_size(const Frame* frame) {
     return frame->frame_elements->size;
 }
 
-void add_lexical_unit(Frame_ptr frame, char *lexical_unit) {
-    array_list_add(frame->lexical_units, lexical_unit);
+void add_lexical_unit(Frame_ptr frame, const char *lexical_unit) {
+    char* added = str_copy(added, lexical_unit);
+    array_list_add(frame->lexical_units, added);
 }
 
-void add_frame_element(Frame_ptr frame, char *frame_element) {
-    array_list_add(frame->frame_elements, frame_element);
+void add_frame_element(Frame_ptr frame, const char *frame_element) {
+    char* added = str_copy(added, frame_element);
+    array_list_add(frame->frame_elements, added);
 }

@@ -6,13 +6,14 @@
 #include "FrameNet.h"
 #include "XmlDocument.h"
 #include "Frame.h"
+#include "Memory/Memory.h"
 
 Frame_net_ptr create_frame_net() {
-    Frame_net_ptr result = malloc(sizeof(Frame_net));
+    Frame_net_ptr result = malloc_(sizeof(Frame_net), "create_frame_net");
     result->frames = create_array_list();
-    Xml_document_ptr xmlDocument = create_xml_document("framenet.xml");
-    parse(xmlDocument);
-    Xml_element_ptr rootNode = xmlDocument->root;
+    Xml_document_ptr xml_document = create_xml_document("framenet.xml");
+    parse(xml_document);
+    Xml_element_ptr rootNode = xml_document->root;
     Xml_element_ptr frameNode = rootNode->first_child;
     while (frameNode != NULL) {
         Frame_ptr currentFrame = create_frame(get_attribute_value(frameNode, "NAME"));
@@ -31,13 +32,13 @@ Frame_net_ptr create_frame_net() {
         array_list_add(result->frames, currentFrame);
         frameNode = frameNode->next_sibling;
     }
-    free_document(xmlDocument);
+    free_document(xml_document);
     return result;
 }
 
 void free_frame_net(Frame_net_ptr frame_net) {
     free_array_list(frame_net->frames, (void (*)(void *)) free_frame);
-    free(frame_net);
+    free_(frame_net);
 }
 
 bool frame_net_lexical_unit_exists(const Frame_net* frame_net, const char *synSetId) {

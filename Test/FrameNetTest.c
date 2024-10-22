@@ -7,7 +7,7 @@
 #include <stdio.h>
 
 void testFrameSize(Frame_net_ptr frame_net) {
-    if (frame_size(frame_net) != 139) {
+    if (frame_size(frame_net) != 809) {
         printf("Test Failed in testFrameSize\n");
     }
 }
@@ -17,7 +17,7 @@ void testLexicalUnitSize(Frame_net_ptr frame_net) {
     for (int i = 0; i < frame_size(frame_net); i++) {
         count += lexical_unit_size(get_frame(frame_net, i));
     }
-    if (2561 != count) {
+    if (8489 != count) {
         printf("Test Failed in testLexicalUnitSize\n");
     }
 }
@@ -27,7 +27,7 @@ void testFrameElementSize(Frame_net_ptr frame_net) {
     for (int i = 0; i < frame_size(frame_net); i++) {
         count += frame_element_size(get_frame(frame_net, i));
     }
-    if (1665 != count) {
+    if (8656 != count) {
         printf("Test Failed in testFrameElementSize\n");
     }
 }
@@ -41,7 +41,7 @@ void testDistinctFrameElements(Frame_net_ptr frame_net) {
             hash_set_insert(elements, get_frame_element(get_frame(frame_net, i), j));
         }
     }
-    if (289 != elements->hash_map->count) {
+    if (1012 != elements->hash_map->count) {
         printf("Test Failed in testDistinctFrameElements\n");
     }
     free_hash_set(elements, NULL);

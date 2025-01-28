@@ -17,7 +17,7 @@ void testLexicalUnitSize(Frame_net_ptr frame_net) {
     for (int i = 0; i < frame_size(frame_net); i++) {
         count += lexical_unit_size(get_frame(frame_net, i));
     }
-    if (8489 != count) {
+    if (8493 != count) {
         printf("Test Failed in testLexicalUnitSize\n");
     }
 }

@@ -13,7 +13,7 @@
  * @param name  Name of the frame
  */
 Frame_ptr create_frame(const char *name) {
-    Frame_ptr result = malloc_(sizeof(Frame), "create_frame");
+    Frame_ptr result = malloc_(sizeof(Frame));
     result->name = str_copy(result->name, name);
     result->frame_elements = create_array_list();
     result->lexical_units = create_array_list();

@@ -4,9 +4,12 @@
 
 #include <string.h>
 #include <stdio.h>
+#include <Memory/Memory.h>
+
 #include "../src/FrameElement.h"
 
 int main() {
+    start_memory_check();
     Frame_element_ptr frameElement = create_frame_element2("Agent$Apply_Heat$TUR10-0100230");
     if (strcmp("Agent", frameElement->frame_element_type) != 0) {
         printf("Test Failed in testFrameElement\n");
@@ -18,4 +21,5 @@ int main() {
         printf("Test Failed in testFrameElement\n");
     }
     free_frame_element(frameElement);
+    end_memory_check();
 }

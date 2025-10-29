@@ -17,7 +17,7 @@
  * @param id  Id of the frameElement
  */
 Frame_element_ptr create_frame_element(const char *frame_element_type, const char *frame, const char *id) {
-    Frame_element_ptr result = malloc_(sizeof(Frame_element), "create_frame_element");
+    Frame_element_ptr result = malloc_(sizeof(Frame_element));
     result->frame_element_type = str_copy(result->frame_element_type, frame_element_type);
     result->frame = str_copy(result->frame, frame);
     result->id = str_copy(result->id, id);
@@ -32,7 +32,7 @@ Frame_element_ptr create_frame_element(const char *frame_element_type, const cha
  * @param frame_element  FrameElement string containing the frameElementType and id
  */
 Frame_element_ptr create_frame_element2(const char *frame_element) {
-    Frame_element_ptr result = malloc_(sizeof(Frame_element), "create_frame_element2");
+    Frame_element_ptr result = malloc_(sizeof(Frame_element));
     if (strchr(frame_element, '$') != NULL) {
         Array_list_ptr items = str_split(frame_element, '$');
         result->frame_element_type = str_copy(result->frame_element_type, array_list_get(items, 0));
@@ -67,11 +67,11 @@ void free_frame_element(Frame_element_ptr frame_element) {
 char *frame_element_to_string(Frame_element_ptr frame_element) {
     char* result;
     if (strcmp(frame_element->frame_element_type, "NONE") == 0){
-        result = malloc_(5 * sizeof(char), "frame_element_to_string_1");
+        result = malloc_(5 * sizeof(char));
         strcpy(result, "NONE");
         return result;
     } else {
-        result = malloc_((strlen(frame_element->frame_element_type) + 3 + strlen(frame_element->id) + strlen(frame_element->frame)) * sizeof(char), "frame_element_to_string_2");
+        result = malloc_((strlen(frame_element->frame_element_type) + 3 + strlen(frame_element->id) + strlen(frame_element->frame)) * sizeof(char));
         sprintf(result, "%s$%s$%s", frame_element->frame_element_type, frame_element->frame, frame_element->id);
         return result;
     }

@@ -12,7 +12,7 @@
  * filename inside that file, the constructor creates a FrameNet.Frame and puts in inside the frames array.
  */
 Frame_net_ptr create_frame_net() {
-    Frame_net_ptr result = malloc_(sizeof(Frame_net), "create_frame_net");
+    Frame_net_ptr result = malloc_(sizeof(Frame_net));
     result->frames = create_array_list();
     Xml_document_ptr xml_document = create_xml_document("framenet.xml");
     parse(xml_document);

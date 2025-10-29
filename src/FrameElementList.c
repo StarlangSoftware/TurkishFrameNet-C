@@ -17,7 +17,7 @@
  * @param frame_element_list String consisting of frame elements separated with '#' character.
  */
 Frame_element_list_ptr create_frame_element_list(const char *frame_element_list) {
-    Frame_element_list_ptr result = malloc_(sizeof(struct frame_element_list), "create_argument_list");
+    Frame_element_list_ptr result = malloc_(sizeof(struct frame_element_list));
     result->frame_elements = create_array_list();
     Array_list_ptr items = str_split(frame_element_list, '#');
     for (int i = 0; i < items->size; i++) {
@@ -42,17 +42,17 @@ char * frame_element_list_to_string(Frame_element_list_ptr frame_element_list) {
     char* result;
     char** frame_elements;
     if (frame_element_list->frame_elements->size == 0) {
-        result = malloc_(5 * sizeof(char), "frame_element_list_to_string_1");
+        result = malloc_(5 * sizeof(char));
         strcpy(result, "NONE");
         return result;
     } else {
-        frame_elements = malloc_(frame_element_list->frame_elements->size * sizeof(char*), "frame_element_list_to_string_2");
+        frame_elements = malloc_(frame_element_list->frame_elements->size * sizeof(char*));
         int size = 0;
         for (int i = 0; i < frame_element_list->frame_elements->size; i++) {
             frame_elements[i] = frame_element_to_string(array_list_get(frame_element_list->frame_elements, i));
             size += strlen(frame_elements[i]);
         }
-        result = malloc_(size * sizeof(char), "frame_element_list_to_string_3");
+        result = malloc_(size * sizeof(char));
         sprintf(result, "%s", frame_elements[0]);
         for (int i = 1; i < frame_element_list->frame_elements->size; i++) {
             sprintf(result, "%s#%s", result, frame_elements[i]);

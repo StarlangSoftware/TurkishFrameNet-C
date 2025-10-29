@@ -5,6 +5,7 @@
 #include "../src/FrameNet.h"
 #include "HashMap/HashSet.h"
 #include <stdio.h>
+#include <Memory/Memory.h>
 
 void testFrameSize(Frame_net_ptr frame_net) {
     if (frame_size(frame_net) != 809) {
@@ -48,10 +49,12 @@ void testDistinctFrameElements(Frame_net_ptr frame_net) {
 }
 
 int main() {
+    start_medium_memory_check();
     Frame_net_ptr frame_net = create_frame_net();
     testFrameSize(frame_net);
     testLexicalUnitSize(frame_net);
     testFrameElementSize(frame_net);
     testDistinctFrameElements(frame_net);
     free_frame_net(frame_net);
+    end_memory_check();
 }

@@ -1,3 +1,7 @@
+Simple Web Interface
+============
+[Link 1](https://starlangsoftware.github.io/nlptoolkit-web-simple/turkish-framenet.html) [Link 2](http://104.247.163.162/nlptoolkit/turkish-framenet.html)
+
 For Contibutors
 ============
 
